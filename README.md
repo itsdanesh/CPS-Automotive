@@ -5,17 +5,17 @@ This current file within this branch will serve as the first primitive version o
 ## Prerequisites
 To start using the program you need either of the following:
 
-- [ ] [Ubuntu 22.04 LTS] (https://ubuntu.com/download/desktop) installed as operating system on your computer. 
+- [ ] [Ubuntu 22.04 LTS](https://ubuntu.com/download/desktop) installed as operating system on your computer. 
 If you have Windows or Mac:
 
-- [ ] [VirtualBox] (https://www.virtualbox.org/wiki/Downloads), [VMware] (https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) or [Multipass] (https://multipass.run/install) installed your computer to be able to load Ubuntu 22.04 as virtual operating system.
+- [ ] [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [VMware](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) or [Multipass](https://multipass.run/install) installed your computer to be able to load Ubuntu 22.04 as virtual operating system.
 
 ## Environment Installation
-- [ ] Ubuntu installation [process] (https://ubuntu.com/tutorials/install-ubuntu-desktop#6-drive-management)
+- [ ] Ubuntu installation [process](https://ubuntu.com/tutorials/install-ubuntu-desktop#6-drive-management)
 
-- [ ] Virtual Box installation [process] (https://www.howtogeek.com/796988/how-to-install-linux-in-virtualbox/),
+- [ ] Virtual Box installation [process](https://www.howtogeek.com/796988/how-to-install-linux-in-virtualbox/),
 
-- [ ] Multipass installation [process on Windows] (https://multipass.run/docs/installing-on-windows), [on MacOs] (https://multipass.run/docs/installing-on-macos), [on Linux] (https://multipass.run/docs/installing-on-linux)
+- [ ] Multipass installation [process on Windows](https://multipass.run/docs/installing-on-windows), [on MacOs](https://multipass.run/docs/installing-on-macos), [on Linux](https://multipass.run/docs/installing-on-linux)
 
 
 ## Running environment (for Multipass)
@@ -69,8 +69,17 @@ multipass mount data-exchange-folder instancename:/host
 ## Running tests
 
 ## Build with
-- [ ] C++ (https://isocpp.org/)
-- [ ] Multipass (https://multipass.run/)
-- [ ] Cmake (https://cmake.org/)
-- [ ] Docker (https://docs.docker.com/get-started/)
-- [ ] Catch (https://github.com/catchorg/Catch2)
+- [ ] [C++](https://isocpp.org/)
+- [ ] [Multipass](https://multipass.run/)
+- [ ] [Cmake](https://cmake.org/)
+- [ ] [Docker](https://docs.docker.com/get-started/)
+- [ ] [Catch](https://github.com/catchorg/Catch2)
+
+## Authors
+
+- Altansukh Tumenjargal 
+- Danesh Mohammadi 
+- Le Manh Cuong Darma 
+- Sergey Balan 
+
+
