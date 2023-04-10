@@ -10,7 +10,7 @@ RUN apt-get install -y --no-install-recommends \
         cmake \
         build-essential
 
-ADD ./src /opt/sources
+ADD . /opt/sources
 WORKDIR /opt/sources
 
 RUN cd /opt/sources && \
