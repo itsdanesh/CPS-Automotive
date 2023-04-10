@@ -57,4 +57,4 @@ release:
   only:
     - /^v(\d+\.)?(\d+\.)?(\d+)$/
   dependencies:
-    - build-and-tes
+    - build-and-test
