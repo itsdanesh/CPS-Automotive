@@ -30,11 +30,14 @@ stages:
 
 # Display information before we start the build.
 before_script:
+  - docker image prune -f
   - docker info
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
 # This section describes what shall be done to build and test the project.
 build-and-test:
+  only: 
+    - branches
   tags:
     - docker-build
   stage: build
@@ -43,6 +46,9 @@ build-and-test:
 
 # This section describes what shall be done to deploy artefacts from the project.
 release:
+  only:
+    refs:
+      - tags
   tags:
     - docker-build
   stage: deploy
