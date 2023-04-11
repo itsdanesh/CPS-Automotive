@@ -1,5 +1,5 @@
 # 2023-group-16
-[![CI/CD pipeline](https://git.chalmers.se/courses/dit638/students/2023-group-16/badges/a8-ci/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2023-group-16/commits/main)
+[![CI/CD pipeline](https://git.chalmers.se/courses/dit638/students/2023-group-16/badges/main/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2023-group-16/commits/main)
 
 
 ## Getting started
