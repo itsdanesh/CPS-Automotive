@@ -61,6 +61,11 @@ members are working on and their plans to accomplish before the next meeting or 
 who may be experiencing difficulties with their tasks.
 * Communication between pairs for pair programming will be determined by each pair on where and when they will carry out their tasks.
 
+## Conflict prevention
+* At the beginning of the project, each team member will be assigned specific roles and responsibilities based on their skills and expertise. This will help in setting clear expectations for each member, reducing the chances of misunderstandings and conflict. A questionaire regarding familiarity of each member toward different toolset was issued and assessed together from the moment the group was formed.
+* In addition to the weekly meetings, team members are encouraged to have regular check-ins with each other to share updates, ask for help, and discuss any concerns. This will help in addressing any issues before they escalate into conflicts. All underlying problems are encouraged to be discussed openly as soon as possible before it can evolve into further problems.
+* Create a culture where team members feel comfortable providing and receiving constructive feedback. This will help in identifying potential issues early on and addressing them before they escalate into conflicts. If any conflict emerge, the conflicy resolution policy is referred to.  
+
 ## Conflict resolution 
 * Discussions on progress and assigning tasks will be done during the weekly meetings. If there are conflicting opinions
 regarding progress and assignment of tasks the team will vote and the option with the most votes will be the option that 
