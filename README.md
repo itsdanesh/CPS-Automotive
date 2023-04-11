@@ -1,5 +1,5 @@
 # 2023-group-16
-
+[![CI/CD pipeline](https://git.chalmers.se/%{project_path}/badges/%{default_branch}/pipeline.svg)](https://git.chalmers.se/%{project_path}/commits/%{default_branch})
 
 
 ## Getting started
