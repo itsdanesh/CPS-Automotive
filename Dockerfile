@@ -11,8 +11,7 @@ RUN apt-get install -y --no-install-recommends \
         cmake \
         build-essential \
         lcov \
-        wkhtmltopdf \
-        pandoc
+        wkhtmltopdf
 
 ADD . /opt/sources
 WORKDIR /opt/sources
@@ -25,18 +24,10 @@ RUN cd /opt/sources && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
     genhtml coverage_filtered.info --output-directory coverage_report && \
-    echo '#!/bin/bash' > merge_html.sh && \
-    echo 'echo "<!DOCTYPE html><html><head><title>Coverage Report</title></head><body>" > merged.html' >> merge_html.sh && \
-    echo 'cat coverage_report/index.html >> merged.html' >> merge_html.sh && \
-    echo 'for file in coverage_report/*/source.html; do' >> merge_html.sh && \
-    echo '  echo "<hr><h2>$(basename "$(dirname "$file")")</h2>" >> merged.html' >> merge_html.sh && \
-    echo '  pandoc -f html -t html --no-highlight --wrap=none --atx-headers --extract-media . --strip-comments --standalone "$file" | grep -v -e "^<!DOCTYPE" -e "^<html>" -e "^<head>" -e "^<meta" -e "^<title>" -e "^</head>" -e "^<body>" -e "^</body>" -e "^</html>" >> merged.html' >> merge_html.sh && \
-    echo 'done' >> merge_html.sh && \
-    echo 'echo "</body></html>" >> merged.html' >> merge_html.sh && \
-    chmod +x merge_html.sh && \
-    ./merge_html.sh && \
-    wkhtmltopdf --enable-local-file-access merged.html coverage_report.pdf && \
-    cp coverage_report.pdf /tmp/code_coverage.pdf
+    wkhtmltopdf --enable-local-file-access coverage_report/index.html coverage_report.pdf && \
+    wkhtmltopdf --enable-local-file-access coverage_report/src/index.html coverage_report2.pdf && \
+    cp coverage_report.pdf /tmp/code_coverage.pdf && \
+    cp coverage_report2.pdf /tmp/code_coverage2.pdf
 
 ##################################################
 # Section 2: Bundle the application.
@@ -49,4 +40,5 @@ RUN apt-get update -y && \
 WORKDIR /opt
 COPY --from=builder /tmp/helloworld .
 COPY --from=builder /tmp/code_coverage.pdf .
+COPY --from=builder /tmp/code_coverage2.pdf .
 ENTRYPOINT ["/opt/helloworld"]
