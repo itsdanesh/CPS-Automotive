@@ -42,9 +42,16 @@ build-and-test:
     - docker-build
   stage: build
   script:
-    - docker build -f Dockerfile .
+    - docker build -f Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - tags
+  artifacts:
+    paths:
+      - coverage_report/
+      - coverage_report.pdf
+    reports:
+      coverage: 'coverage_report/index.html'
 
 # This section describes what shall be done to deploy artefacts from the project.
 release:
