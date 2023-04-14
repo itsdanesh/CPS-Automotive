@@ -47,11 +47,10 @@ build-and-test:
   except:
     - tags
   artifacts:
+    when: always
     paths:
       - coverage_report/
       - coverage_report.pdf
-    reports:
-      coverage: 'coverage_report/index.html'
 
 # This section describes what shall be done to deploy artefacts from the project.
 release:
