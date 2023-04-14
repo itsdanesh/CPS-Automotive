@@ -24,7 +24,8 @@ RUN cd /opt/sources && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
     genhtml coverage_filtered.info --output-directory coverage_report && \
-    wkhtmltopdf --enable-local-file-access coverage_report/index.html coverage_report.pdf
+    wkhtmltopdf --enable-local-file-access coverage_report/index.html coverage_report.pdf && \
+    cp coverage_report.pdf /tmp/code_coverage.pdf
 
 ##################################################
 # Section 2: Bundle the application.
@@ -36,4 +37,5 @@ RUN apt-get update -y && \
 
 WORKDIR /opt
 COPY --from=builder /tmp/helloworld .
+COPY --from=builder /tmp/code_coverage.pdf .
 ENTRYPOINT ["/opt/helloworld"]

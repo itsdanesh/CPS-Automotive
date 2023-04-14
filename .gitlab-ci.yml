@@ -43,13 +43,15 @@ build-and-test:
   stage: build
   script:
     - docker build -f Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - docker create --name temp_container "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+    - docker cp temp_container:/opt/code_coverage.pdf ./coverage_report.pdf
+    - docker rm temp_container
     - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - tags
   artifacts:
     when: always
     paths:
-      - coverage_report/
       - coverage_report.pdf
 
 # This section describes what shall be done to deploy artefacts from the project.
