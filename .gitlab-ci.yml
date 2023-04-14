@@ -44,8 +44,7 @@ build-and-test:
   script:
     - docker build -f Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
     - docker create --name temp_container "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
-    - docker cp temp_container:/opt/code_coverage.pdf ./coverage_report.pdf
-    - docker cp temp_container:/opt/code_coverage2.pdf ./coverage_report2.pdf
+    - docker cp temp_container:/opt/coverage_report ./coverage_report
     - docker rm temp_container
     - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
@@ -53,8 +52,7 @@ build-and-test:
   artifacts:
     when: always
     paths:
-      - coverage_report.pdf
-      - coverage_report2.pdf
+      - coverage_report/
 
 # This section describes what shall be done to deploy artefacts from the project.
 release:

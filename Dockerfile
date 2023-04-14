@@ -6,12 +6,11 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
 
-# Install CMake, essential libraries, line coverage tool, and HTML-to-PDF converter
+# Install CMake, essential libraries, line coverage tool
 RUN apt-get install -y --no-install-recommends \
         cmake \
         build-essential \
-        lcov \
-        wkhtmltopdf
+        lcov
 
 ADD . /opt/sources
 WORKDIR /opt/sources
@@ -23,11 +22,7 @@ RUN cd /opt/sources && \
     make && make test && cp helloworld /tmp && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
-    genhtml coverage_filtered.info --output-directory coverage_report && \
-    wkhtmltopdf --enable-local-file-access coverage_report/index.html coverage_report.pdf && \
-    wkhtmltopdf --enable-local-file-access coverage_report/src/index.html coverage_report2.pdf && \
-    cp coverage_report.pdf /tmp/code_coverage.pdf && \
-    cp coverage_report2.pdf /tmp/code_coverage2.pdf
+    genhtml coverage_filtered.info --output-directory coverage_report
 
 ##################################################
 # Section 2: Bundle the application.
@@ -39,6 +34,6 @@ RUN apt-get update -y && \
 
 WORKDIR /opt
 COPY --from=builder /tmp/helloworld .
-COPY --from=builder /tmp/code_coverage.pdf .
-COPY --from=builder /tmp/code_coverage2.pdf .
+COPY --from=builder /opt/sources/build/coverage_report /opt/coverage_report
+
 ENTRYPOINT ["/opt/helloworld"]
