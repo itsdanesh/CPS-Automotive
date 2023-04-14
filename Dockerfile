@@ -6,6 +6,8 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
 
+# Get timezone data before installing tzdata
+RUN ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 # Install CMake, essential libraries, line coverage tool
 RUN apt-get install -y --no-install-recommends \
         cmake \
