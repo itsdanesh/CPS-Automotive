@@ -10,7 +10,8 @@ RUN apt-get update -y && \
 RUN apt-get install -y --no-install-recommends \
         cmake \
         build-essential \
-        lcov
+        lcov \
+        gcovr
 
 ADD . /opt/sources
 WORKDIR /opt/sources
@@ -22,7 +23,8 @@ RUN cd /opt/sources && \
     make && make test && cp helloworld /tmp && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
-    genhtml coverage_filtered.info --output-directory coverage_report
+    genhtml coverage_filtered.info --output-directory coverage_report && \
+    gcovr -r .. --html-details -o coverage_report/gcov_details.html
 
 ##################################################
 # Section 2: Bundle the application.
