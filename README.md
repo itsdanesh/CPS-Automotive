@@ -1,3 +1,7 @@
+
+# 2023-group-16
+[![CI/CD pipeline](https://git.chalmers.se/courses/dit638/students/2023-group-16/badges/main/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2023-group-16/commits/main)
+
 # Obstacle avoidance system for automotive vehicles
 
 This current file within this branch will serve as the first primitive version of the README file for this project. We will keep this branch and constantly update the documentation on this branch gradually throughout the project.
