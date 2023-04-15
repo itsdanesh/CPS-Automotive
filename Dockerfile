@@ -26,7 +26,8 @@ RUN cd /opt/sources && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
     genhtml coverage_filtered.info --output-directory coverage_report && \
-    gcovr -r .. --html-details -o coverage_report/gcov_details.html
+    gcovr -r .. --html-details -o coverage_report/gcov_details.html && \
+    gcovr -r .. -x -o coverage_report/coverage.xml
 
 ##################################################
 # Section 2: Bundle the application.
