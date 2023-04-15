@@ -57,7 +57,7 @@ build-and-test:
 upload-to-codecov:
   stage: build
   script:
-    - apk add --no-cache curl
+    - apk add --no-cache curl git
     - curl -Os https://uploader.codecov.io/latest/linux/codecov
     - chmod +x codecov
     - ./codecov -t $CODECOV_TOKEN -f coverage_report/coverage.xml
