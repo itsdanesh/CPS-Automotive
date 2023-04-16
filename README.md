@@ -1,6 +1,6 @@
 
 # 2023-group-16
-| [![CI/CD pipeline](https://git.chalmers.se/courses/dit638/students/2023-group-16/badges/main/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2023-group-16/commits/main) | [![codecov](https://codecov.io/gl/altansukh.t/dit639-group16/branch/main/graph/badge.svg?token=8AACK46CFW)](https://codecov.io/gl/altansukh.t/dit639-group16) |
+[![CI/CD pipeline](https://git.chalmers.se/courses/dit638/students/2023-group-16/badges/main/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2023-group-16/commits/main)&nbsp;&nbsp;&nbsp;[![codecov](https://codecov.io/gl/altansukh.t/dit639-group16/branch/main/graph/badge.svg?token=8AACK46CFW)](https://app.codecov.io/gl/altansukh.t/dit639-group16)
 
 # Obstacle avoidance system for automotive vehicles
 
