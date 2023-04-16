@@ -42,9 +42,29 @@ build-and-test:
     - docker-build
   stage: build
   script:
-    - docker build -f Dockerfile .
+    - docker build -f Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - docker create --name temp_container "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+    - docker cp temp_container:/opt/coverage_report ./coverage_report
+    - docker rm temp_container
+    - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - tags
+  artifacts:
+    when: always
+    paths:
+      - coverage_report/
+
+upload-to-codecov:
+  stage: build
+  script:
+    - apk add --no-cache curl git
+    - curl -Os https://uploader.codecov.io/latest/linux/codecov
+    - chmod +x codecov
+    - ./codecov -t $CODECOV_TOKEN -f coverage_report/coverage.xml
+  needs:
+    - build-and-test
+  tags:
+    - docker-build
 
 # This section describes what shall be done to deploy artefacts from the project.
 release:
