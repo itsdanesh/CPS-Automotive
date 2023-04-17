@@ -25,9 +25,11 @@ RUN cd /opt/sources && \
     make && make test && cp helloworld /tmp && \
     lcov --capture --directory . --output-file coverage.info && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
-    genhtml coverage_filtered.info --output-directory coverage_report && \
-    gcovr -r .. --html-details -o coverage_report/gcov_details.html && \
-    gcovr -r .. --xml-pretty --print-summary -x -o coverage_report/coverage.xml
+    lcov --remove coverage_filtered.info '*/catch.hpp' --output-file coverage_final.info && \
+    genhtml coverage_final.info --output-directory coverage_report && \
+    echo "Running gcovr commands..." && \
+    gcovr -r .. --xml --exclude '.*\/catch.hpp' --print-summary -o coverage_report/coverage.xml && \
+    gcovr -r .. --html-details --exclude '.*\/catch.hpp' -o coverage_report/gcov_details.html
 
 ##################################################
 # Section 2: Bundle the application.

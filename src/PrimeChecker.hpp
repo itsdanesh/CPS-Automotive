@@ -6,3 +6,4 @@ class PrimeChecker {
     bool isPrime(uint16_t n);
 };
 #endif
+// header
