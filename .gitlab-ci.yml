@@ -52,7 +52,7 @@ build-and-test:
     - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - tags
-  coverage: /^\s*lines:\s*\d+.\d+\%/
+  coverage: "10.0%"
   artifacts:
     name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
     expire_in: 60 days
