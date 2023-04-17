@@ -50,13 +50,14 @@ build-and-test:
     - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - tags
-  coverage: '/^\s*lines:\s*\d+.\d+\%/'
+  coverage: /^TOTAL.*\s+(\d+\%)$/
   artifacts:
     name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
     expire_in: 60 days
     when: always
     paths:
-      - coverage_report/
+      - coverage_report
+      - coverage_report/coverage.xml
     reports:
       coverage_report:
         coverage_format: cobertura
