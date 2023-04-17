@@ -28,8 +28,8 @@ RUN cd /opt/sources && \
     lcov --remove coverage_filtered.info '*/catch.hpp' --output-file coverage_final.info && \
     genhtml coverage_final.info --output-directory coverage_report && \
     echo 'lcov part done ...'
-RUN gcovr -r .. --xml --print-summary -x -o coverage_report/coverage.xml --exclude '*/catch.hpp' && \
-    gcovr -r .. --html-details -o coverage_report/gcov_details.html --exclude '*/catch.hpp' && \
+RUN gcovr -r .. --exclude '*/catch.hpp' --xml --print-summary -x -o coverage_report/coverage.xml && \
+    gcovr -r ..  --exclude '*/catch.hpp' --html-details -o coverage_report/gcov_details.html && \
     echo 'gcov part done ...'
 
 ##################################################
