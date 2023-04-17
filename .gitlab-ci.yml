@@ -20,7 +20,6 @@ image: docker:19.03.3
 variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_TLS_CERTDIR: ""
-  COVERAGE: "true"
 
 services:
   - name: docker:19.03.3-dind
@@ -51,6 +50,8 @@ build-and-test:
   except:
     - tags
   coverage: /^TOTAL.*\s+(\d+\%)$/
+  variables: 
+    COVERAGE: "true"
   artifacts:
     name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
     expire_in: 60 days
