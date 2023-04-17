@@ -28,12 +28,3 @@ target_link_libraries(${PROJECT_NAME}-Runner --coverage)
 
 # Add test suite
 add_test(NAME ${PROJECT_NAME}-Runner COMMAND ${PROJECT_NAME}-Runner)
-
-# Add a custom target for generating the coverage report
-add_custom_target(coverage
-    COMMAND mkdir -p coverage_report
-    COMMAND ${CMAKE_COMMAND} -E chdir coverage_report gcovr -r .. --xml --exclude '.*\/catch.hpp' --print-summary -o coverage.xml
-    COMMAND ${CMAKE_COMMAND} -E chdir coverage_report gcovr -r .. --html-details --exclude '.*\/catch.hpp' -o gcov_details.html
-    DEPENDS ${PROJECT_NAME}-Runner
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-)

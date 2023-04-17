@@ -23,7 +23,12 @@ RUN cd /opt/sources && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=Release .. && \
     make && make test && cp helloworld /tmp && \
-    make coverage
+    lcov --capture --directory . --output-file coverage.info && \
+    lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
+    lcov --remove coverage_filtered.info '*/catch.hpp' --output-file coverage_final.info && \
+    genhtml coverage_final.info --output-directory coverage_report && \
+    gcovr -r .. --xml --exclude '.*\/catch.hpp' --print-summary -o coverage.xml && \
+    gcovr -r .. --html-details --exclude '.*\/catch.hpp' -o gcov_details.html
 
 ##################################################
 # Section 2: Bundle the application.
