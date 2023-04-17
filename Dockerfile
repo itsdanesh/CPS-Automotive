@@ -27,10 +27,8 @@ RUN cd /opt/sources && \
     lcov --remove coverage.info '/usr/*' --output-file coverage_filtered.info && \
     lcov --remove coverage_filtered.info '*/catch.hpp' --output-file coverage_final.info && \
     genhtml coverage_final.info --output-directory coverage_report && \
-    echo 'lcov part done ...'
-RUN gcovr -r .. --exclude '*/catch.hpp' --xml --print-summary -x -o coverage_report/coverage.xml && \
-    gcovr -r ..  --exclude '*/catch.hpp' --html-details -o coverage_report/gcov_details.html && \
-    echo 'gcov part done ...'
+    gcovr -r .. --xml --print-summary -x --exclude '*/catch.hpp' -o coverage_report/coverage.xml && \
+    gcovr -r .. --html-details --exclude '*/catch.hpp' -o coverage_report/gcov_details.html
 
 ##################################################
 # Section 2: Bundle the application.
