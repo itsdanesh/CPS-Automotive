@@ -35,6 +35,6 @@ RUN apt-get update -y && \
 
 WORKDIR /opt
 COPY --from=builder /tmp/helloworld .
-COPY --from=builder /opt/sources/build/coverage /opt/coverage_report
+COPY --from=builder /opt/sources/build/coverage_report /opt/coverage_report
 
 ENTRYPOINT ["/opt/helloworld"]
